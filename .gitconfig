@@ -1,0 +1,19 @@
+[color]
+    interactive = true
+
+[alias]
+	last = log -1 HEAD
+	latest = !git checkout master && git fetch upstream && git rebase upstream/master
+	squash = !git rebase -i master
+	dbranch = !git checkout master && git push origin :${1} && git branch -D ${1}
+	dbranchu = !git checkout master && git push upstream :${1}
+	aa = !git add . && git add -u && git status
+	b = !git branch
+	rb = !git branch -r
+	pmm = !git push origin master:master
+	getbranches = !git checkout master && git remote show origin
+	getbranch = !\"git checkout -b $1 origin/$1\"
+	lga = log --graph --oneline --all --decorate
+	lf = show --pretty=\"format:\" --name-only
+	pr = "!pullandcheckout() { ((!$#)) && echo No arugments supplied! && exit 1; git fetch $1; git checkout $1/$2; git rebase -i master; }; pullandcheckout"
+
